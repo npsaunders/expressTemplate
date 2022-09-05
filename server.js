@@ -5,7 +5,7 @@ const port = 3000;
 const methodOverride = require("method-override")
 
 // ----- DATA -----
-const pokemons = require("./models/pokemon.js");
+const ***** = require("./models/*****.js");
 
 // ----- MIDDLEWARE -----
 app.use(express.static("public"));
@@ -16,52 +16,52 @@ app.use(methodOverride("_method"));
 // ----- ROUTES -----
 // redirfect to main page (Index page) on starting server
 app.get('/', (req, res) => {
-  res.redirect("/pokemons")
+  res.redirect("/*****")
 })
 
 
 // INDEX
-app.get("/pokemons/", (req, res) => {
-  res.render("index_pokemon.ejs", {
-    pokemon: pokemons,
-    tabTitle: "Index"
+app.get("/*****/", (req, res) => {
+  res.render("*****.ejs", {
+    ***** : *****,
+    tabTitle: "*****"
   })
 })
 
 // NEW
-app.get("/pokemons/new", (req, res) => {
-  res.render("new_pokemon.ejs", {
+app.get("/*****/new", (req, res) => {
+  res.render("*****.ejs", {
     tabTitle: "New"
   })
 })
 
 // DELETE
-app.delete("/pokemons/:idOfPokemon", (req, res) => {
-  //remove the Pokemon object from the array
-  pokemons.splice(req.params.idOfPokemon, 1),
+app.delete("/*****/:id", (req, res) => {
+  //remove the ***** object from the array
+  *****.splice(req.params.id, 1),
     //redirect to the index page
-    res.redirect("/pokemons")
+    res.redirect("/*****")
 })
 
 // UPDATE
-app.put("/pokemons/:idOfPokemon", (req, res) => {
-  //:idOfPokemon is the index of our Pokemons array that we want to change
+app.put("/*****/:id", (req, res) => {
+  //:id is the index of our ***** array that we want to change
   //Set that element to the value of req.body (the input data)
-  pokemons[req.params.idOfPokemon] = req.body;
+  ***** [req.params.id] = req.body;
   //update the nested array
-  pokemons[req.params.idOfPokemon].type = [req.body.type0, req.body.type1, req.body.type2]
-  //update the stats (nested object)
-  pokemons[req.params.idOfPokemon].stats = {
+  ***** [req.params.idO].type =[req.body.type0, req.body.type1, req.body.type2]
+    //update the stats (nested object)
+    ***** [req.params.id].stats = {
     hp: req.body.hp,
-    defense: req.body.defense,
-    attack: req.body.attack
+      defense: req.body.defense,
+        attack: req.body.attack
   }
   //redirect to the index page
-  res.redirect("/pokemons") //redirect to the index page
+  res.redirect("/*****") //redirect to the index page
 })
 
 // CREATE
-app.post("/pokemons", (req, res) => {
+app.post("/*****", (req, res) => {
   //create the nested object called stats
   req.body.stats = {
     hp: req.body.hp,
@@ -70,31 +70,31 @@ app.post("/pokemons", (req, res) => {
   },
     //create the nested array called type
     req.body.type = [req.body.type0, req.body.type1, req.body.type2]
-  //add the new pokemon to the array of pokemons
-  pokemons.push(req.body)
-  res.redirect("/pokemons")
+    //add the new ***** to the array of *****
+    *****.push(req.body)
+  res.redirect("/*****")
 })
 
 // EDIT
-app.get("/pokemons/:idOfPokemon/edit", (req, res) => {
-  res.render("edit_pokemon.ejs",
+app.get("/*****/:id/edit", (req, res) => {
+  res.render("*****.ejs",
     {
       //pass in an object that contains
-      pokemon: pokemons[req.params.idOfPokemon], //the pokemon object
-      index: req.params.idOfPokemon, //... and its index in the array
-      stat: pokemons[req.params.idOfPokemon].stats,//the stats object
-      tabTitle: "Edit"
+      ***** : ***** [req.params.id], //the pokemon object
+    index: req.params.id, //... and its index in the array
+    stat: ***** [req.params.id].stats,//the stats object
+    tabTitle: "Edit"
     }
-  )
+)
 })
 
 // SHOW
-app.get("/pokemons/:idPokemonIndex", (req, res) => {
-  res.render("show_pokemon.ejs", {
-    //pass the Pokemon object to the show page. This is for a specific index
-    pokemon: pokemons[req.params.idPokemonIndex],
+app.get("/*****/:id", (req, res) => {
+  res.render("*****.ejs", {
+    //pass the ***** object to the show page. This is for a specific index
+    ***** : ***** [req.params.id],
     //pass stat (which is the stats object) to the show page to display some stats
-    stat: pokemons[req.params.idPokemonIndex].stats,
+    stat: ***** [req.params.id].stats,
     tabTitle: "Show",
   })
 })

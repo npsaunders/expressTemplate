@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <%- include('./partials/head.ejs')%>
+</head>
+
+<body>
+  <!-- ============ MAIN ============ -->
+  <h1>Edit Some Features of <%=pokemon.name%>
+  </h1>
+  <main>
+    <form action="/pokemons/<%=index%>?_method=PUT" method="POST">
+
+      <!-- Name -->
+      <label for="pokemonName">Pokemon Name</label>
+      <input type="text" name="name" value="<%=pokemon.name%>">
+
+      <!-- Image URL -->
+      <label for="pokemonImgUrl">Image Source URL</label>
+      <input type="url" class="u-full-width" name="img" value="<%=pokemon.img%>">
+
+      <!-- Types these will be stored in an array as part of the Pokemon object -->
+
+      <!-- Type 1 -->
+      <label for="pokemonType">Type 1</label>
+      <input class="u-full-width" type="text" name="type0" value="<%=pokemon.type[0]%>">
+
+      <!-- Type 2 -->
+      <label for="pokemonType">Type 2</label>
+      <input class="u-full-width" type="text" name="type1" value="<%=pokemon.type[1]%>">
+
+      <!-- Type 3 -->
+      <label for="pokemonType">Type 3</label>
+      <input class="u-full-width" type="text" name="type2" value="<%=pokemon.type[2]%>">
+      <h5 id="form">Stats</h5>
+
+
+      <!-- Stats - these will be stored in an object as part of the Pokemon object -->
+
+      <!-- stats hp -->
+      <label for="stats: hp">hp</label>
+      <input class="u-full-width" type="text" name="hp" value="<%=stat.hp%>">
+
+      <!-- stats attack -->
+      <label for="stats: attack">attack</label>
+      <input class="u-full-width" type="text" name="attack" value="<%=stat.attack%>">
+
+      <!-- stats defense -->
+      <label for="stats: defense">defense</label>
+      <input class="u-full-width" type="text" name="defense" value="<%=stat.defense%>">
+
+      <!-- Submit and Cancel buttons -->
+      <input class="waves-effect waves-light btn-small" type="submit" value="Submit">
+      <a id="returnIndex" class="waves-effect waves-light btn-small" href="/pokemons">Cancel</a>
+    </form>
+  </main>
+</body>
+
+</html>

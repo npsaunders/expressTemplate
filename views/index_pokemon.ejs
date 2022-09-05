@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <%- include('./partials/head.ejs')%>
+</head>
+
+<body>
+  <!-- ============ MAIN ============ -->
+  <main>
+    <!-- Sort the array of pokemons by using the key:name value -->
+    <%pokemons.sort((a, b)=> (a.name > b.name) ? 1 : -1)%>
+      <div class="h1Cont">
+        <h1>Pokemons</h1>
+        <!-- NEW -->
+        <a id="newPoke" class="waves-effect waves-light btn-large" href="/pokemons/new">New Pokemon</a>
+        <br />
+      </div>
+      <div class="container1">
+        <% for(let i=0; i < pokemons.length; i++) { %>
+          <div>
+            <a href="/pokemons/<%=i%>">
+              <img src=<%=pokemons[i].img%> class="thumbnail"/></a>
+
+            <!--- DELETE BUTTON --->
+            <div class="form">
+              <form action="/pokemons/<%=i%>?_method=DELETE" method="POST">
+                <%= pokemons[i].name %>
+                  </br>
+                  <div container="buttons">
+                    <input type="submit" value="Delete" class="waves-effect waves-light btn-small" />
+                    <!---- EDIT ---->
+                    <a id="editBut" href="/pokemons/<%=i%>/edit" class="waves-effect waves-light btn-small">edit</a>
+                  </div>
+              </form>
+            </div>
+          </div>
+          <% } %>
+      </div>
+  </main>
+</body>
+
+</html>

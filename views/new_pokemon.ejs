@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <%- include('./partials/head.ejs')%>
+</head>
+
+<body>
+  <!-- ============ MAIN ============ -->
+  <h1>New Pokemon
+  </h1>
+  <main>
+    <form action="/pokemons" method="POST">
+
+      <!-- Name -->
+      <label for="pokemonName">Pokemon Name</label>
+      <input class="u-full-width" type="text" placeholder="Pokemon Name" name="name">
+
+      <!-- Image URL -->
+      <label for="pokemonImgUrl">Image Source URL</label>
+      <input type="url" class="u-full-width" placeholder="image source" name="img">
+
+      <h5 id="form">Type</h5>
+
+      <!-- Type -->
+      <!-- Type 1 -->
+      <label for="pokemonType">Type 1</label>
+      <input class="u-full-width" type="text" placeholder="Grass" name="type0">
+
+      <!-- Type 2 -->
+      <label for="pokemonType">Type 2</label>
+      <input class="u-full-width" type="text" placeholder="Poison" name="type1">
+
+      <!-- Type 3 -->
+      <label for="pokemonType">Type 3</label>
+      <input class="u-full-width" type="text" placeholder="Fire" name="type2">
+      <h5 id="form">Stats</h5>
+
+      <!-- stats hp -->
+      <label for="stats: hp">hp</label>
+      <input class="u-full-width" type="text" placeholder="30" name="hp">
+
+      <!-- stats Attack -->
+      <label for="stats: attack">attack</label>
+      <input class="u-full-width" type="text" placeholder="50" name="attack">
+
+      <!-- stats defense -->
+      <label for="stats: defense">defense</label>
+      <input class="u-full-width" type="text" placeholder="12" name="defense">
+
+      <!-- Cancel & Submit buttons -->
+      <input class="waves-effect waves-light btn-small" type="submit" value="Submit">
+      <a id="returnIndex" class="waves-effect waves-light btn-small" href="/pokemons">Cancel</a><br />
+    </form>
+  </main>
+</body>
+
+</html>

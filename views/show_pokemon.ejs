@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/head.ejs')%>
+</head>
+
+<body>
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="container">
+      <h1>
+        <%=pokemon.name%>
+      </h1>
+      <!-- BACK -->
+      <a id="returnIndex" class="waves-effect waves-light btn-small" href="/pokemons">Back</a>
+      <br />
+      <img src=<%=pokemon.img%> alt="<%=pokemon.name%>" />
+        <table>
+          <tbody>
+            <tr>
+              <td class="showText">
+                Types:
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%=pokemon.type%>
+              </td>
+            </tr>
+            <tr>
+              <td class="showText">Stats:</td>
+            <tr>
+              <td>
+                hp: <%=stat.hp%>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                attack: <%-stat.attack%>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                defense: <%-stat.defense%>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+    </div>
+  </main>
+</body>
+
+</html>

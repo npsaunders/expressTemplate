@@ -1,11 +1,39 @@
+require('dotenv').config()
+
 // ----- DEPENDANCIES -----
 const express = require("express");
+const methodOverride = require("method-override");
+const mongoose = require('mongoose');
 const app = express();
-const port = 3000;
-const methodOverride = require("method-override")
+const PORT = process.env.PORT || 3000;
 
 // ----- DATA -----
-const ***** = require("./models/*****.js");
+// const ***** = require("./models/*****.js");
+const db = mongoose.connection;
+//Database
+//___________________
+// How to connect to the database either via heroku or locally
+const MONGODB_URI = process.env.MONGODB_URI;
+
+// Connect to Mongo &
+// Fix Depreciation Warnings from Mongoose
+// May or may not need these depending on your Mongoose version
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }
+);
+
+// mongodb connection
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex
+    : true,
+})
+
+// mongodb error / success 
+db.on('error', (err) => console.log(`${err.message} is Mongod not running?`))
+db.on('connected', () => console.log('mongo connected'))
+db.on('disconnected', () => console.log('mongo disconnected'))
 
 // ----- MIDDLEWARE -----
 app.use(express.static("public"));
